@@ -23,6 +23,10 @@ fetch("https://1000-most-common-words.p.rapidapi.com/words/spanish?words_limit=1
     if(word.length > 7){
       location.reload()
     }
+    let maxTrys = 5
+    if(word.length > 5){
+      maxTrys = 10
+    }
     let wordArray = word.toUpperCase().split("")
 
     let actualRow = document.querySelector(".row")
@@ -123,7 +127,7 @@ fetch("https://1000-most-common-words.p.rapidapi.com/words/spanish?words_limit=1
 
     function createRow(){
       rowId++
-      if(rowId <= 5){
+      if(rowId <= maxTrys){
         let newRow = document.createElement('div')
         newRow.classList.add('row')
         newRow.setAttribute('id', rowId)
